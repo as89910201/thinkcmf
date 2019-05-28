@@ -13,6 +13,7 @@ use think\Db;
 use cmf\controller\AdminBaseController;
 use cmf\controller\BaseController;
 use app\admin\model\StudentModel;
+use app\admin\model\ClassModel;
 class StudentController extends AdminBaseController
 {
  
@@ -21,8 +22,10 @@ class StudentController extends AdminBaseController
     {
         
         $Students = StudentModel::paginate(2);
+       
         // 把分页数据赋值给模板变量users
         $this->assign('students', $Students);
+      
         $this->assign('page', $Students->render());//单独提取分页出来
 
 
@@ -31,6 +34,9 @@ class StudentController extends AdminBaseController
  
     public function add()
     {
+        $ClassModel = new ClassModel();
+        $select_str = $ClassModel->allclass();
+        $this->assign('select_str', $select_str);
          return $this->fetch();
     }
 
@@ -40,6 +46,10 @@ class StudentController extends AdminBaseController
         $data      = $this->request->param();
         $data['enrol_time'] = strtotime($data['enrol_time']); 
         $data['graduate_time'] = strtotime($data['graduate_time']); 
+        if(!empty($data['img'])){
+            $data['img']  =  "https://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
+        }
+        
         $StudentModel = new StudentModel();
         $result    = $this->validate($data, 'Student');
         if ($result !== true) {
@@ -55,7 +65,12 @@ class StudentController extends AdminBaseController
     {
         $id        = $this->request->param('id', 0, 'intval');
         $StudentModel = new StudentModel();
+        $ClassModel = new ClassModel();
+
         $Student      = $StudentModel->get($id);
+        
+        $select_str = $ClassModel->allclass($Student['class_id']);
+        $this->assign('select_str', $select_str);
         $this->assign('student', $Student);
         return $this->fetch();
     }
@@ -66,6 +81,9 @@ class StudentController extends AdminBaseController
         $data      = $this->request->param();
         $data['enrol_time'] = strtotime($data['enrol_time']); 
         $data['graduate_time'] = strtotime($data['graduate_time']); 
+        if(!empty($data['img'])){
+            $data['img']  =  "https://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
+        }
         //dump($data);die;
         $StudentModel = new StudentModel();
         $result    = $this->validate($data, 'Student');
