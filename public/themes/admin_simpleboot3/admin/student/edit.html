@@ -1,0 +1,103 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li><a href="{:url('student/index')}">{:lang('ADMIN_STUDENT_INDEX')}</a></li>
+        <li><a href="{:url('student/add')}">{:lang('ADMIN_STUDENT_ADD')}</a></li>
+        <li class="active"><a>编辑学生信息</a></li>
+    </ul>
+    <form method="post" class="form-horizontal " action="{:url('student/editPost')}">
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">姓名<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="name" value="{$student.name}">
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label for="input-target" class="col-sm-2 control-label">状态</label>
+                <div class="col-md-6 col-sm-10">
+                    <select class="form-control" name="is_graduate" id="input-target">
+                            <php>$selected_yes=$student['is_graduate']==1?"selected='selected'":"";</php>
+                            <php>$selected_no=$student['is_graduate']==0?"selected='selected'":"";</php>
+                            <option value="1" {$selected_yes}>毕业</option>
+                            <option value="0" {$selected_no}>未毕业</option>
+                    </select>
+                </div>
+            </div>
+        
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">年龄<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="age" value="{$student.age}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">手机号<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="tel" value="{$student.tel}">
+            </div>
+        </div>
+         
+        <div class="form-group">
+                <label for="input-link_image" class="col-sm-2 control-label">学生照片</label>
+                <div class="col-md-6 col-sm-10">
+                    <input type="text" class="form-control" id="input-link_image" name="img" value="{$student.img}">
+                    <a href="javascript:uploadOneImage('图片上传','#input-link_image');">上传图片</a>
+                </div>
+            </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">入学时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="date" class="form-control" id="input-link_url" name="enrol_time" value="{$student.enrol_time}">
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">毕业时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="date" class="form-control" id="input-link_url" name="graduate_time" value="{$student.graduate_time}">
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">职位<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="position" value="{$student.position}">
+            </div>
+        </div> 
+        <div class="form-group">
+                <label for="input-link_name" class="col-sm-2 control-label">排序<span class="form-required">*</span></label>
+                <div class="col-md-6 col-sm-10">
+                    <input type="text" class="form-control" id="input-link_name" name="list_order" value="{$student.list_order}">
+                </div>
+            </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">薪资</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="pay" id="input-link_description">{$student.pay}</textarea>
+            </div>
+        </div>
+      
+        <div class="form-group">
+                <label for="input-target" class="col-sm-2 control-label">性别</label>
+                <div class="col-md-6 col-sm-10">
+                    <select class="form-control" name="sex" id="input-target">
+                            <php>$selected=$student['sex']==0?"selected='selected'":"";</php>
+                            <php>$selected_=$student['sex']==1?"selected='selected'":"";</php>
+                            <option value="0" {$selected}>女</option>
+                            <option value="1" {$selected_}>男</option>
+                    </select>
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name="student_id" value="{$student.student_id}">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('SAVE')}</button>
+                <a class="btn btn-default" href="{:url('student/index')}">{:lang('BACK')}</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

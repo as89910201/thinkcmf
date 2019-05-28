@@ -1,0 +1,104 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{:url('student/index')}">所有学生信息</a></li>
+        <li><a href="{:url('student/add')}">添加学生信息</a></li>
+    </ul>
+    <form method="post" class="js-ajax-form margin-top-20" action="{:url('student/listOrder')}">
+        <div class="table-actions">
+            <button class="btn btn-sm btn-primary js-ajax-submit" type="submit">{:lang('SORT')}</button>
+            <button class="btn btn-sm btn-success js-ajax-submit" type="submit" data-action="{:url('student/toggle',array('display'=>1,'type'=>'sex'))}" data-subcheck="true">男
+            </button>
+            <button class="btn btn-sm btn-danger js-ajax-submit" type="submit"
+                    data-action="{:url('student/toggle',array('hide'=>1,'type'=>'sex'))}" data-subcheck="true">女
+            </button>
+
+            <button class="btn btn-sm btn-success js-ajax-submit" type="submit"
+                    data-action="{:url('student/toggle',array('display'=>1,'type'=>'is_graduate'))}" data-subcheck="true">毕业
+            </button>
+            <button class="btn btn-sm btn-danger js-ajax-submit" type="submit"
+                    data-action="{:url('student/toggle',array('hide'=>1,'type'=>'is_graduate'))}" data-subcheck="true">未毕业
+            </button>
+        </div>
+        <php>$sex=array("1"=>"男","0"=>"女");</php>
+        <php>$status=array("1"=>"毕业","0"=>"未毕业");</php>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="16">
+                    <label>
+                        <input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
+                    </label>
+                </th>
+                <th width="50">{:lang('SORT')}</th>
+                <th width="50">ID</th>
+                <th>学员姓名</th>
+                <th>年龄</th>
+                <th>手机号码</th>
+                <th>照片</th>
+                <th>入学时间</th>
+                <th>毕业时间</th>
+                <th>职位</th>
+                <th>薪资</th>
+                <th width="50">性别</th>
+                <th width="50">状态</th>
+                <th width="120">{:lang('ACTIONS')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="students" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]"
+                               value="{$vo.student_id}"></td>
+                    <td><input name='list_orders[{$vo.student_id}]' class="input input-order mr5" type='text' size='3'
+                               value='{$vo.list_order}'></td>
+                    <td>{$vo.student_id}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.age}</td>
+                    <td>{$vo.tel}</td>
+                    <td>{$vo.img}</td>
+                    <td>{$vo.enrol_time}</td>
+                    <td>{$vo.graduate_time}</td>
+                    <td>{$vo.position}</td>
+                    <td>{$vo.pay}</td>
+                    <td>
+                        <empty name="vo.sex">
+                            <span class="label label-default">
+                                {$sex[$vo['sex']]}
+                            </span>
+                            <else/>
+                            <span class="label label-success">
+                                {$sex[$vo['sex']]}
+                            </span>
+                        </empty>
+                    </td>
+                    <td>
+                        <empty name="vo.is_graduate">
+                            <span class="label label-default">
+                                {$status[$vo['is_graduate']]}
+                            </span>
+                            <else/>
+                            <span class="label label-success">
+                                {$status[$vo['is_graduate']]}
+                            </span>
+                        </empty>
+                    </td>
+                    <td>
+                        <a class="btn btn-xs btn-primary" href="{:url('student/edit',array('id'=>$vo['student_id']))}">{:lang('EDIT')}</a>
+                        <a class="btn btn-xs btn-danger" href="{:url('student/delete',array('id'=>$vo['student_id']))}" class="js-ajax-delete">
+                            {:lang('DELETE')}
+                        </a>
+                    </td>
+                </tr>
+            </foreach>
+             <tr>
+                 <td colspan="14"><div class="pagination">{$page}</div></td>
+             </tr>
+        </table>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
