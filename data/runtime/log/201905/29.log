@@ -2145,3 +2145,311 @@
   'rows' => NULL,
   'extra' => 'Impossible WHERE noticed after reading const tables',
 ) ]
+---------------------------------------------------------------
+[2019-05-29T10:26:18+08:00] ::1 GET thinkcmf.com/admin/index/index.html
+[运行时间：0.746944s] [吞吐率：1.34req/s] [内存消耗：1,338.05kb] [文件加载：97]
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf/vendor\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'thinkcmf.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://thinkcmf.com/admin/public/login.html',
+  'connection' => 'keep-alive',
+  'cookie' => 'thinkphp_show_page_trace=0|0; admin_username=admin; Hm_lvt_3bd0ecf189515ac893b73c6f7e9beaa8=1558939584,1559033806,1559033860,1559033916; PHPSESSID=tkai0fksjf8kd0l5jg3k286uau; Hm_lpvt_3bd0ecf189515ac893b73c6f7e9beaa8=1559059545; thinkphp_show_page_trace=0|0',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor\thinkcmf\cmf\src\behavior/../lang\zh-cn.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/admin_menu.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/admin.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/user/lang/zh-cn/admin_menu.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf/data/lang//admin_menu.php
+[ info ] [ VIEW ] D:\wampserver\www\thinkcmf\public/themes/admin_simpleboot3/admin\index\index.html [ array (
+  0 => 'admin',
+  1 => 'menus',
+  2 => 'menus_js_var',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035351s ] mysql:host=39.98.205.63;port=3306;dbname=thinkcmf;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_option` [ RunTime:0.021388s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.017884s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.024115s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_user` [ RunTime:0.021762s ]
+[ sql ] [ SQL ] SELECT * FROM `cmf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.025367s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'cmf_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '8',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_admin_menu` [ RunTime:0.051680s ]
+[ sql ] [ SQL ] SELECT * FROM `cmf_admin_menu` ORDER BY `app` ASC,`controller` ASC,`action` ASC [ RunTime:0.024331s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'cmf_admin_menu',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 135,
+  'extra' => 'Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.033089s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.036344s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ warn ] SQL:SELECT * FROM `cmf_admin_menu` ORDER BY `app` ASC,`controller` ASC,`action` ASC [Using filesort]
+---------------------------------------------------------------
+[2019-05-29T10:26:19+08:00] ::1 GET thinkcmf.com/admin/main/index.html
+[运行时间：0.540284s] [吞吐率：1.85req/s] [内存消耗：745.46kb] [文件加载：90]
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf/vendor\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'thinkcmf.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://thinkcmf.com/admin/index/index.html',
+  'connection' => 'keep-alive',
+  'cookie' => 'thinkphp_show_page_trace=0|0; admin_username=admin; Hm_lvt_3bd0ecf189515ac893b73c6f7e9beaa8=1558939584,1559033806,1559033860,1559033916; PHPSESSID=tkai0fksjf8kd0l5jg3k286uau; Hm_lpvt_3bd0ecf189515ac893b73c6f7e9beaa8=1559059545; thinkphp_show_page_trace=0|0',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor\thinkcmf\cmf\src\behavior/../lang\zh-cn.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/admin_menu.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/admin.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/user/lang/zh-cn/admin_menu.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf/data/lang//admin_menu.php
+[ info ] [ VIEW ] D:\wampserver\www\thinkcmf\public/themes/admin_simpleboot3/admin\main\index.html [ array (
+  0 => 'admin',
+  1 => 'dashboard_widgets',
+  2 => 'dashboard_widget_plugins',
+  3 => 'has_smtp_setting',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.064133s ] mysql:host=39.98.205.63;port=3306;dbname=thinkcmf;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_option` [ RunTime:0.036240s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.031422s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_user` [ RunTime:0.044672s ]
+[ sql ] [ SQL ] SELECT * FROM `cmf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.027159s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'cmf_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '8',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'smtp_setting' LIMIT 1 [ RunTime:0.032583s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.073108s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+---------------------------------------------------------------
+[2019-05-29T10:26:19+08:00] ::1 GET thinkcmf.com/admin/student/index.html
+[运行时间：0.763496s] [吞吐率：1.31req/s] [内存消耗：916.03kb] [文件加载：100]
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf/vendor\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'thinkcmf.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://thinkcmf.com/admin/index/index.html',
+  'connection' => 'keep-alive',
+  'cookie' => 'thinkphp_show_page_trace=0|0; admin_username=admin; Hm_lvt_3bd0ecf189515ac893b73c6f7e9beaa8=1558939584,1559033806,1559033860,1559033916; PHPSESSID=tkai0fksjf8kd0l5jg3k286uau; Hm_lpvt_3bd0ecf189515ac893b73c6f7e9beaa8=1559059545; thinkphp_show_page_trace=0|0',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor\thinkcmf\cmf\src\behavior/../lang\zh-cn.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/admin_menu.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/admin.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf\vendor/thinkcmf/cmf-app/src/user/lang/zh-cn/admin_menu.php
+[ info ] [ LANG ] D:\wampserver\www\thinkcmf/data/lang//admin_menu.php
+[ info ] [ VIEW ] D:\wampserver\www\thinkcmf\public/themes/admin_simpleboot3/admin\student\index.html [ array (
+  0 => 'admin',
+  1 => 'students',
+  2 => 'page',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.057403s ] mysql:host=39.98.205.63;port=3306;dbname=thinkcmf;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_option` [ RunTime:0.026141s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.028706s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_user` [ RunTime:0.045083s ]
+[ sql ] [ SQL ] SELECT * FROM `cmf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.027695s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'cmf_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '8',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_student` [ RunTime:0.037092s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cmf_student` LIMIT 1 [ RunTime:0.037272s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'cmf_student',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using index',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `cmf_student` LIMIT 0,2 [ RunTime:0.030365s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'cmf_student',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `cmf_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.030529s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]

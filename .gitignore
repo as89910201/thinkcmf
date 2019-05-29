@@ -1,1 +1,3 @@
-  /data/runtime/
+.idea
+.git
+/data/cache
