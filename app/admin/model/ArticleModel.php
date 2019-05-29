@@ -25,7 +25,7 @@ class ArticleModel extends Model
         return $res;
     }
 
-    public function get($id){
+    public function find($id){
         $student = parent::get($id);
  
         $student['add_time'] = date("Y-m-d", $student['add_time']);

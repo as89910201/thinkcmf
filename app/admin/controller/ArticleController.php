@@ -14,7 +14,7 @@ use cmf\controller\AdminBaseController;
 use cmf\controller\BaseController;
 use app\admin\model\ArticleModel;
 use app\admin\model\ClassModel;
-
+use app\admin\model\TagsModel;
 class ArticleController extends AdminBaseController
 {
     public function index()
@@ -28,9 +28,11 @@ class ArticleController extends AdminBaseController
  
     public function add()
     {
-        /*$ClassModel = new TagsModel();
-        $select_str = $ClassModel->allclass();
-        $this->assign('select_str', $select_str);*/
+        $TagsModel = new TagsModel();
+        dump($TagsModel->get());die;
+       // $select_str = $TagsModel->where('is_show',1)->select('id','name')->get();
+        $this->assign('select_str', $select_str);
+        dump($select_str);
          return $this->fetch();
     }
 
@@ -53,7 +55,7 @@ class ArticleController extends AdminBaseController
     {
         $id        = $this->request->param('id', 0, 'intval');
         $ArticleModel = new ArticleModel();
-        $article      = $ArticleModel->get($id);
+        $article      = $ArticleModel->find($id);
         $this->assign('article', $article);
         return $this->fetch();
     }
