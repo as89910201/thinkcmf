@@ -1,5 +1,8 @@
 <?php
 return array (
+  'ADMIN_TEACHER_INDEX' => '任教人员管理',
+  'ADMIN_TEACHER_ADD' => '教师信息修改',
+  'ADMIN_ADVERT_INDEX' => '广告位管理',
   'ADMIN_ARTICLE_INDEX' => '文章管理',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',

@@ -48,4 +48,21 @@ class AdvertController extends AdminBaseController
 
         $this->success("保存成功！", url("Advert/index"));
     }
+    public function toggle()
+    {
+        $data = $this->request->param();
+        $TeacherModel = new PictureModel();
+
+        if (isset($data['ids']) && !empty($data["display"])) {
+            $ids = $this->request->param('ids/a');
+            $TeacherModel->where('picture_id', 'in', $ids)->update([$data["type"] => 1]);
+            $this->success("更新成功！");
+        }
+
+        if (isset($data['ids']) && !empty($data["hide"])) {
+            $ids = $this->request->param('ids/a');
+            $TeacherModel->where('picture_id', 'in', $ids)->update([$data["type"] => 0]);
+            $this->success("更新成功！");
+        }
+    }
 }
