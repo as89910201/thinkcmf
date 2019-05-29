@@ -22,7 +22,9 @@ class TeacherController extends AdminBaseController
  
     public function index()
     {
-        $Teachers = TeacherModel::paginate(2);
+        //$Teachers = TeacherModel::paginate(2);
+        $Teachers = new TeacherModel;
+        $Teachers = $Teachers->sel();
         //print_r($Teachers);die;
         $this->assign('teachers', $Teachers);
         $this->assign('page', $Teachers->render());//单独提取分页出来
