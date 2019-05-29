@@ -1,5 +1,6 @@
 <?php
 return array (
+  'ADMIN_ARTICLE_INDEX' => '文章管理',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',
   'ADMIN_HOOK_PLUGINS' => '钩子插件管理',
@@ -94,6 +95,7 @@ return array (
   'ADMIN_STORAGE_INDEX' => '文件存储',
   'ADMIN_STORAGE_SETTINGPOST' => '文件存储设置提交',
   'ADMIN_STUDENT_INDEX' => '学生管理',
+  'ADMIN_TAGS_INDEX' => '文章标签',
   'ADMIN_TEACHER_INDEX' => '任教人员管理',
   'ADMIN_THEME_ACTIVE' => '启用模板',
   'ADMIN_THEME_DATASOURCE' => '模板文件设置数据源',
