@@ -9,11 +9,11 @@ use think\DB;
 class PositionModel extends Model
 {
     public function pos(){
-        $student = DB::table('cmf_position')->select();
-        return $student;
+        $Position = DB::table('cmf_position')->select();
+        return $Position;
     }
     public function get($id){
-        $student = DB::table('cmf_position')->where('position_id','=',$id)->select();
-        return $student;
+        $Position = DB::table('cmf_position')->where('position_id','=',$id)->select();
+        return $Position;
     }
 }

@@ -3,20 +3,18 @@
 <body>
 <div class="wrap js-check-wrap">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="{:url('teacher/index')}">所有教师信息</a></li>
-        <li><a href="{:url('teacher/add')}">添加教师信息</a></li>
+        <li class="active"><a href="{:url('picture/index')}">所有广告信息</a></li>
     </ul>
-    <form method="post" class="js-ajax-form margin-top-20" action="{:url('teacher/listOrder')}">
+    <form method="post" class="js-ajax-form margin-top-20" action="{:url('picture/listOrder')}">
         <div class="table-actions">
             <button class="btn btn-sm btn-primary js-ajax-submit" type="submit">{:lang('SORT')}</button>
-            <button class="btn btn-sm btn-success js-ajax-submit" type="submit" data-action="{:url('teacher/toggle',array('display'=>1,'type'=>'sex'))}" data-subcheck="true">男
+            <button class="btn btn-sm btn-success js-ajax-submit" type="submit" data-action="{:url('advert/toggle',array('display'=>1,'type'=>'status'))}" data-subcheck="true">显示
             </button>
             <button class="btn btn-sm btn-danger js-ajax-submit" type="submit"
-                    data-action="{:url('teacher/toggle',array('hide'=>1,'type'=>'sex'))}" data-subcheck="true">女
+                    data-action="{:url('advert/toggle',array('hide'=>1,'type'=>'status'))}" data-subcheck="true">不显示
             </button>
         </div>
-        <php>$sex=array("1"=>"男","0"=>"女");</php>
-        <php>$status=array("1"=>"毕业","0"=>"未毕业");</php>
+        <php>$status=array("1"=>"显示","0"=>"不显示");</php>
         <table class="table table-hover table-bordered table-list">
             <thead>
             <tr>
@@ -27,44 +25,40 @@
                 </th>
                 <th width="50">{:lang('SORT')}</th>
                 <th width="50">ID</th>
-                <th>教师姓名</th>
-                <th>年龄</th>
-                <th>手机号码</th>
-                <th>照片</th>
-                <th>职位</th>
-                <th width="50">性别</th>
+                <th>广告图片名</th>
+                <th>广告详情</th>
+                <th>状态</th>
+                <th>广告图片</th>
                 <th width="120">{:lang('ACTIONS')}</th>
             </tr>
             </thead>
             <tbody>
-            <foreach name="teachers" item="vo">
+            <foreach name="pictures" item="vo">
                 <tr>
                     <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]"
-                               value="{$vo.teacher_id}"></td>
-                    <td><input name='list_orders[{$vo.teacher_id}]' class="input input-order mr5" type='text' size='3'
+                               value="{$vo.picture_id}"></td>
+                    <td><input name='list_orders[{$vo.picture_id}]' class="input input-order mr5" type='text' size='3'
                                value='{$vo.list_order}'></td>
-                    <td>{$vo.teacher_id}</td>
-                    <td>{$vo.name}</td>
-                    <td>{$vo.age}</td>
-                    <td>{$vo.teacher_tel}</td>
-                    <td>{$vo.teacher_portrait_src}</td>
-                    <td>{$vo.position_name}</td>
+                    <td>{$vo.picture_id}</td>
+                    <td>{$vo.picture_name}</td>
+                    <td>{$vo.details}</td>
                     <td>
                         <empty name="vo.sex">
                             <span class="label label-default">
-                                {$sex[$vo['sex']]}
+                                {$status[$vo['status']]}
                             </span>
                             <else/>
                             <span class="label label-success">
-                                {$sex[$vo['sex']]}
+                                {$status[$vo['status']]}
                             </span>
                         </empty>
                     </td>
+                    <td><img src="{$vo.picture_src}" width="200"/></td>
                     <td>
-                        <a class="btn btn-xs btn-primary" href="{:url('teacher/edit',array('id'=>$vo['teacher_id']))}">{:lang('EDIT')}</a>
-                        <a class="btn btn-xs btn-danger" href="{:url('teacher/delete',array('id'=>$vo['teacher_id']))}" class="js-ajax-delete">
+                        <a class="btn btn-xs btn-primary" href="{:url('Advert/edit',array('id'=>$vo['picture_id']))}">{:lang('EDIT')}</a>
+                        <!--<a class="btn btn-xs btn-danger" href="{:url('picture/delete',array('id'=>$vo['picture_id']))}" class="js-ajax-delete">
                             {:lang('DELETE')}
-                        </a>
+                        </a>-->
                     </td>
                 </tr>
             </foreach>

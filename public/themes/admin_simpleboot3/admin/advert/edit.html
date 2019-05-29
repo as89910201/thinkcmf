@@ -1,0 +1,57 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li><a href="{:url('Advert/index')}">{:lang('ADMIN_ADVERT_INDEX')}</a></li>
+        <li class="active"><a>编辑广告位信息</a></li>
+    </ul>
+    <form method="post" class="form-horizontal " action="{:url('advert/editPost')}">
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">广告名<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="picture_name" value="{$picture.picture_name}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_image" class="col-sm-2 control-label">广告图片</label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_image" name="picture_src" value="{$picture.picture_src}">
+                <a href="javascript:uploadOneImage('图片上传','#input-link_image');">上传图片</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">排序<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="list_order" value="{$picture.list_order}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-target" class="col-sm-2 control-label">状态</label>
+            <div class="col-md-6 col-sm-10">
+                <select class="form-control" name="status" id="input-target">
+                    <php>$selected=$picture['status']==0?"selected='selected'":"";</php>
+                    <php>$selected_=$picture['status']==1?"selected='selected'":"";</php>
+                    <option value="0" {$selected}>不显示</option>
+                    <option value="1" {$selected_}>显示</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">图片详情<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="details" value="{$picture.details}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name="picture_id" value="{$picture.picture_id}">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('SAVE')}</button>
+                <a class="btn btn-default" href="{:url('advert/index')}">{:lang('BACK')}</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
