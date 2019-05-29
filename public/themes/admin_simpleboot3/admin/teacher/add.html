@@ -34,7 +34,7 @@
         <div class="form-group">
             <label for="input-link_url" class="col-sm-2 control-label">教龄<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_url" name="teacher_tel" >
+                <input type="text" class="form-control" id="input-link_url" name="obtain_employment_time" >
             </div>
         </div>
         <div class="form-group">
@@ -44,9 +44,19 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">班级<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                {$class}
+            </div>
+        </div>
+        <div class="form-group">
             <label for="input-link_url" class="col-sm-2 control-label">所授课程<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_url" name="teacher_tel" >
+                <select class="form-control" name="course_id" id="input-target">
+                    <foreach name="course" item="vi">
+                        <option value="{$vi.course_id}">{$vi.course_name}</option>
+                    </foreach>
+                </select>
             </div>
         </div>
 

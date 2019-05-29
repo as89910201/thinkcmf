@@ -14,6 +14,8 @@ use cmf\controller\AdminBaseController;
 use cmf\controller\BaseController;
 use app\admin\model\TeacherModel;
 use app\admin\model\PositionModel;
+use app\admin\model\CourseModel;
+use app\admin\model\ClassModel;
 class TeacherController extends AdminBaseController
 {
  
@@ -31,6 +33,13 @@ class TeacherController extends AdminBaseController
     {
         $TeacherModel = new PositionModel();
         $teacher = $TeacherModel->pos();
+        $CourseModel = new CourseModel();
+        $course = $CourseModel->sel();
+        $ClassModel = new ClassModel();
+        $class  = $ClassModel->allclass();
+        //print_r($class);die;
+        $this->assign('class', $class);
+        $this->assign('course', $course);
         $this->assign('teacher', $teacher);
         return $this->fetch();
     }
@@ -55,9 +64,23 @@ class TeacherController extends AdminBaseController
         $id = $this->request->param('id', 0, 'intval');
         $TeacherModel = new TeacherModel();
         $teacher = $TeacherModel->get($id);
+
         $PositionModel = new PositionModel();
         $teacher_pos = $PositionModel->pos();
         $teacher_one = $PositionModel->get($teacher->position_id);
+
+        $CourseModel = new CourseModel();
+        $course_pos = $CourseModel->sel();
+        $course_one = $CourseModel->get($teacher->course_id);
+
+        $ClassModel = new ClassModel();
+        $class_all  = $ClassModel->allclass();
+        $class_one = $ClassModel->get($teacher->class_id);
+
+        $this->assign('class_all', $class_all);
+        $this->assign('class_one', $class_one);
+        $this->assign('course_pos', $course_pos);
+        $this->assign('course_one', $course_one);
         $this->assign('teacher_pos', $teacher_pos);
         $this->assign('teacher_one', $teacher_one);
         $this->assign('teacher', $teacher);
@@ -68,7 +91,7 @@ class TeacherController extends AdminBaseController
     public function editPost()
     {
         $data      = $this->request->param();
-        dump($data);die;
+        //dump($data);die;
         $TeacherModel = new TeacherModel();
         $result    = $this->validate($data, 'Teacher');
          

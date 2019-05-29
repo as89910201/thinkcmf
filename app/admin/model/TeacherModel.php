@@ -14,7 +14,7 @@ class TeacherModel extends Model
         return $list;
     }
     public function get($id){
-        $student = parent::get($id);
-        return $student;
+        $teacher = parent::get($id);
+        return $teacher;
     }
 }
