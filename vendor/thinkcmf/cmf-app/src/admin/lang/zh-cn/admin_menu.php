@@ -9,7 +9,10 @@
 // | Author: 老猫 <thinkcmf@126.com>
 // +----------------------------------------------------------------------
 return [
-    //admin_menu
+    //admin_men
+    'ADMIN_ARTICLE_EDIT'                 => '文章修改',
+    'ADMIN_ARTICLE_ADD'                  => '文章添加',
+    'ADMIN_TEACHER_ADD'                  => '添加教师信息',
     'ADMIN_AD_ADD_POST'                  => '提交添加',
     'ADMIN_AD_EDIT_POST'                 => '提交编辑',
     'ADMIN_AD_TOGGLE'                    => '广告显示切换',
