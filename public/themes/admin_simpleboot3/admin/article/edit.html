@@ -38,9 +38,10 @@
             <label for="input-link_url" class="col-sm-2 control-label">文章分类<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
                 <select class="form-control" name="cid"  id="input-target">
-
-                    <option value="1">1</option>
-
+                    <option value="">请选择文章分类</option>
+                    <foreach name="cat_str" item="vo">
+                        <option value="{$vo.cid}" <if condition="$vo.cid eq $article.cid">selected</if>>{$vo.c_name}</option>
+                    </foreach>
                 </select>
             </div>
         </div>
@@ -48,19 +49,17 @@
         <label class="col-sm-2 control-label" style="text-align: right;padding-right: 25px;">文章标签</label>
         <div style="width: 550px;margin-left: 100px;">
 
-            <label style="margin-top: 7px;margin-right: 9px;">
-                哈喽
-                <input name='tags_ids[11]' type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
-            </label >
+            <foreach name="tags_str" item="v">
+                <label style="margin-top: 7px;margin-right: 9px;">
+                    {$v.name}
+                    <if condition="in_array($v['id'],$article['tags_id']) eq true">
+                    <input name='tags_ids[{$v.id}]' checked type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
+                    <else />
+                    <input name='tags_ids[{$v.id}]' type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
+                    </if>
 
-            <label style="margin-top: 7px;margin-right: 9px;">
-                哈喽
-                <input name='tags_ids[22]' type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
-            </label >
-            <label style="margin-top: 7px;margin-right: 9px;">
-                哈喽
-                <input name='tags_ids[33]' type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
-            </label >
+                </label >
+            </foreach>
 
         </div>
         <div class="form-group">

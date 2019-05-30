@@ -4,7 +4,7 @@ namespace app\admin\model;
 
 use think\Model;
 use think\facade\Cache;
-
+use think\DB;
 class ArticleModel extends Model
 {   
     protected $pk = 'article_id';
@@ -18,14 +18,19 @@ class ArticleModel extends Model
     }
 
     public static function paginates($num){
-        $res = parent::where('is_show',1)->order('add_time','desc')->paginate($num);
+        $res = DB::table('cmf_article')
+            ->alias('a')
+            ->where('a.is_show',1)
+            ->join('cmf_article_tags t','t.id = a.tags_id')
+            ->order('add_time','desc')
+            ->paginate($num);
         foreach ($res as $val){
             $val['add_time'] = date("Y年m月d日", $val['add_time']);
         }
         return $res;
     }
 
-    public function find($id){
+    public function get($id){
         $student = parent::get($id);
  
         $student['add_time'] = date("Y-m-d", $student['add_time']);

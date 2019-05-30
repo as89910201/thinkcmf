@@ -20,4 +20,7 @@ class TagsModel extends Model
         }
         return $res;
     }
+    public function getAll(){
+        return parent::where('is_show',1)->field(['id','name'])->select();
+    }
 }
