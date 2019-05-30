@@ -3,6 +3,8 @@ return array (
   'ADMIN_ADVERT_INDEX' => '广告位管理',
   'ADMIN_ARTICLE_INDEX' => '文章管理',
   'ADMIN_CATEGORY_INDEX' => '文章分类管理',
+  'ADMIN_COURSE_INDEX' => '课程管理',
+    'ADMIN_COURSE_ADD' => '课程添加',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',
   'ADMIN_HOOK_PLUGINS' => '钩子插件管理',

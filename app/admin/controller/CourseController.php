@@ -12,40 +12,26 @@ namespace app\admin\controller;
 
 use cmf\controller\AdminBaseController;
 use cmf\controller\BaseController;
-use app\admin\model\TeacherModel;
-use app\admin\model\PositionModel;
 use app\admin\model\CourseModel;
-use app\admin\model\ClassModel;
-class TeacherController extends AdminBaseController
+
+class CourseController extends AdminBaseController
 {
     public function index()
     {
-        //$Teachers = TeacherModel::paginate(2);
-        $Teachers = new TeacherModel;
-        $Teachers = $Teachers->sel();
-        //print_r($Teachers);die;
-        $this->assign('teachers', $Teachers);
-        $this->assign('page', $Teachers->render());//单独提取分页出来
-        return $this->fetch();
-    }
- 
-    public function add()
-    {
-        $TeacherModel = new PositionModel();
-        $teacher = $TeacherModel->pos();
-        $CourseModel = new CourseModel();
-        $course = $CourseModel->sel();
-        $ClassModel = new ClassModel();
-        $class  = $ClassModel->allclass();
-        //print_r($class);die;
-        $this->assign('class', $class);
+        $course = CourseModel::paginate(2);
+        //print_r($course);die;
         $this->assign('course', $course);
-        $this->assign('teacher', $teacher);
+        $this->assign('page', $course->render());//单独提取分页出来
         return $this->fetch();
     }
 
-   
-    public function addPost()
+    public function add()
+    {
+        return $this->fetch();
+    }
+
+
+   /* public function addPost()
     {
         $data = $this->request->param();
         $TeacherModel = new TeacherModel();
@@ -58,7 +44,7 @@ class TeacherController extends AdminBaseController
         $this->success("添加成功！", url("Teacher/index"));
     }
 
-   
+
     public function edit()
     {
         $id = $this->request->param('id', 0, 'intval');
@@ -87,14 +73,14 @@ class TeacherController extends AdminBaseController
         return $this->fetch();
     }
 
-    
+
     public function editPost()
     {
         $data      = $this->request->param();
         //dump($data);die;
         $TeacherModel = new TeacherModel();
         $result    = $this->validate($data, 'Teacher');
-         
+
         if ($result !== true) {
             $this->error($result);
         }
@@ -103,21 +89,21 @@ class TeacherController extends AdminBaseController
         $this->success("保存成功！", url("Teacher/index"));
     }
 
-  
+
     public function delete()
     {
         $id = $this->request->param('id', 0, 'intval');
         TeacherModel::destroy($id);
         $this->success("删除成功！", url("teacher/index"));
     }
- 
+
     public function listOrder()
     {
         $TeacherModel = new TeacherModel();
         BaseController::listOrders($TeacherModel);
         $this->success("排序更新成功！");
     }
- 
+
     public function toggle()
     {
         $data      = $this->request->param();
@@ -134,8 +120,7 @@ class TeacherController extends AdminBaseController
             $TeacherModel->where('teacher_id', 'in', $ids)->update([$data["type"] => 0]);
             $this->success("更新成功！");
         }
-
-
     }
+    */
 
 }

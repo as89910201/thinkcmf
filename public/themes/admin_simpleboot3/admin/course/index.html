@@ -1,0 +1,78 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{:url('course/index')}">所有课程信息</a></li>
+        <li><a href="{:url('course/add')}">添加课程信息</a></li>
+    </ul>
+    <form method="post" class="js-ajax-form margin-top-20" action="{:url('course/listorder')}">
+        <div class="table-actions">
+            <button class="btn btn-sm btn-primary js-ajax-submit" type="submit">{:lang('SORT')}</button>
+            <button class="btn btn-sm btn-success js-ajax-submit" type="submit" data-action="{:url('course/toggle',array('display'=>1,'type'=>'course_state'))}" data-subcheck="true">结课
+            </button>
+            <button class="btn btn-sm btn-danger js-ajax-submit" type="submit"
+                    data-action="{:url('course/toggle',array('hide'=>1,'type'=>'course_state'))}" data-subcheck="true">未结课
+            </button>
+        </div>
+        <php>$state = array("1"=>"结课","0"=>"未结课");</php>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="16">
+                    <label>
+                        <input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
+                    </label>
+                </th>
+                <th width="50">{:lang('SORT')}</th>
+                <th width="50">ID</th>
+                <th>课程名</th>
+                <th>开课时间</th>
+                <th>开班期数</th>
+                <th>报名链接</th>
+                <th>授课形式</th>
+                <th width="50">课程状态</th>
+                <th width="120">{:lang('ACTIONS')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="course" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]"
+                               value="{$vo.course_id}"></td>
+                    <td><input name='list_orders[{$vo.course_id}]' class="input input-order mr5" type='text' size='3'
+                               value='{$vo.list_order}'></td>
+                    <td>{$vo.course_id}</td>
+                    <td>{$vo.course_name}</td>
+                    <td>{$vo.course_time}</td>
+                    <td>{$vo.course_num}</td>
+                    <td>{$vo.enroll_link}</td>
+                    <td>{$vo.course_form}</td>
+                    <td>
+                        <empty name="vo.course_state">
+                            <span class="label label-default">
+                                {$state[$vo['course_state']]}
+                            </span>
+                            <else/>
+                            <span class="label label-success">
+                                {$state[$vo['course_state']]}
+                            </span>
+                        </empty>
+                    </td>
+                    <td>
+                        <a class="btn btn-xs btn-primary" href="{:url('course/edit',array('id'=>$vo['course_id']))}">{:lang('EDIT')}</a>
+                        <a class="btn btn-xs btn-danger" href="{:url('course/delete',array('id'=>$vo['course_id']))}" class="js-ajax-delete">
+                            {:lang('DELETE')}
+                        </a>
+                    </td>
+                </tr>
+            </foreach>
+            <tr>
+                <td colspan="14"><div class="pagination">{$page}</div></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
