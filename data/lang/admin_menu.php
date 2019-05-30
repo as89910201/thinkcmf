@@ -1,9 +1,8 @@
 <?php
 return array (
-  'ADMIN_TEACHER_INDEX' => '任教人员管理',
-  'ADMIN_TEACHER_ADD' => '教师信息修改',
   'ADMIN_ADVERT_INDEX' => '广告位管理',
   'ADMIN_ARTICLE_INDEX' => '文章管理',
+  'ADMIN_CATEGORY_INDEX' => '文章分类管理',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',
   'ADMIN_HOOK_PLUGINS' => '钩子插件管理',
@@ -43,6 +42,7 @@ return array (
   'ADMIN_NAVMENU_EDITPOST' => '编辑导航菜单提交保存',
   'ADMIN_NAVMENU_INDEX' => '导航菜单',
   'ADMIN_NAVMENU_LISTORDER' => '导航菜单排序',
+  'ADMIN_PLACARD_INDEX' => '',
   'ADMIN_PLUGIN_DEFAULT' => '插件中心',
   'ADMIN_PLUGIN_INDEX' => '插件列表',
   'ADMIN_PLUGIN_INSTALL' => '插件安装',

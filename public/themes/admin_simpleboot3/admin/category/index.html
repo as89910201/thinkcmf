@@ -1,0 +1,56 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{:url('category/index')}">所有文章分类</a></li>
+        <li><a href="{:url('category/add')}">添加分类</a></li>
+    </ul>
+    <form method="post" class="js-ajax-form margin-top-20" action="{:url('category/listOrder')}">
+        <div class="table-actions">
+            <button class="btn btn-sm btn-primary js-ajax-submit" type="submit">{:lang('SORT')}</button>
+           
+ 
+        </div>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="16">
+                    <label>
+                        <input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
+                    </label>
+                </th>
+                <th width="50">{:lang('SORT')}</th>
+                <th width="50">ID</th>
+                <th>分类名</th>
+               
+                <th width="120">{:lang('ACTIONS')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="category" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]"
+                               value="{$vo.cid}"></td>
+                    <td><input name='list_orders[{$vo.cid}]' class="input input-order mr5" type='text' size='3'
+                               value='{$vo.list_order}'></td>
+                    <td>{$vo.cid}</td>
+                    <td>{$vo.c_name}</td>
+                   
+                    <td>
+                        <a class="btn btn-xs btn-primary" href="{:url('category/edit',array('id'=>$vo['cid']))}">{:lang('EDIT')}</a>
+                        <a class="btn btn-xs btn-danger" href="{:url('category/delete',array('id'=>$vo['cid']))}" class="js-ajax-delete">
+                            {:lang('DELETE')}
+                        </a>
+                    </td>
+                </tr>
+            </foreach>
+             <tr>
+                 <td colspan="14"><div class="pagination">{$page}</div></td>
+             </tr>
+        </table>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
