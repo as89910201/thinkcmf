@@ -16,10 +16,10 @@ use app\admin\model\CourseModel;
 
 class CourseController extends AdminBaseController
 {
-    public function index()
+    public function list()
     {
         $course = CourseModel::paginate(2);
-        //print_r($course);die;
+ 
         $this->assign('course', $course);
         $this->assign('page', $course->render());//单独提取分页出来
         return $this->fetch();
@@ -31,45 +31,29 @@ class CourseController extends AdminBaseController
     }
 
 
-   /* public function addPost()
+    public function addPost()
     {
         $data = $this->request->param();
-        $TeacherModel = new TeacherModel();
-        $result    = $this->validate($data, 'Teacher');
+        
+        $data['create_time'] = time();
+        $data['update_time'] = time();
+        $CourseModel = new CourseModel();
+        $result    = $this->validate($data, 'Course');
         if ($result !== true) {
             $this->error($result);
         }
-        $TeacherModel->allowField(true)->save($data);
+        $CourseModel->allowField(true)->save($data);
 
-        $this->success("添加成功！", url("Teacher/index"));
+        $this->success("添加成功！", url("Course/list"));
     }
 
 
     public function edit()
     {
         $id = $this->request->param('id', 0, 'intval');
-        $TeacherModel = new TeacherModel();
-        $teacher = $TeacherModel->get($id);
-
-        $PositionModel = new PositionModel();
-        $teacher_pos = $PositionModel->pos();
-        $teacher_one = $PositionModel->get($teacher->position_id);
-
         $CourseModel = new CourseModel();
-        $course_pos = $CourseModel->sel();
-        $course_one = $CourseModel->get($teacher->course_id);
-
-        $ClassModel = new ClassModel();
-        $class_all  = $ClassModel->allclass();
-        $class_one = $ClassModel->get($teacher->class_id);
-
-        $this->assign('class_all', $class_all);
-        $this->assign('class_one', $class_one);
-        $this->assign('course_pos', $course_pos);
-        $this->assign('course_one', $course_one);
-        $this->assign('teacher_pos', $teacher_pos);
-        $this->assign('teacher_one', $teacher_one);
-        $this->assign('teacher', $teacher);
+        $course_one = $CourseModel->get($id);
+        $this->assign('course', $course_one[0]);
         return $this->fetch();
     }
 
@@ -77,24 +61,24 @@ class CourseController extends AdminBaseController
     public function editPost()
     {
         $data      = $this->request->param();
-        //dump($data);die;
-        $TeacherModel = new TeacherModel();
-        $result    = $this->validate($data, 'Teacher');
+
+        $CourseModel = new CourseModel();
+        $result    = $this->validate($data, 'Course');
 
         if ($result !== true) {
             $this->error($result);
         }
-        $TeacherModel->allowField(true)->isUpdate(true)->save($data);
+        $CourseModel->allowField(true)->isUpdate(true)->save($data);
 
-        $this->success("保存成功！", url("Teacher/index"));
+        $this->success("保存成功！", url("course/list"));
     }
 
 
     public function delete()
     {
         $id = $this->request->param('id', 0, 'intval');
-        TeacherModel::destroy($id);
-        $this->success("删除成功！", url("teacher/index"));
+        CourseModel::destroy($id);
+        $this->success("删除成功！", url("course/list"));
     }
 
     public function listOrder()
@@ -121,6 +105,6 @@ class CourseController extends AdminBaseController
             $this->success("更新成功！");
         }
     }
-    */
+    
 
 }

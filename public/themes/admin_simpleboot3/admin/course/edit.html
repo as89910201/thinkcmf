@@ -1,70 +1,79 @@
-<include file="public@header" />
+<include file="public@header"/>
 </head>
 <body>
 <div class="wrap">
     <ul class="nav nav-tabs">
-        <li><a href="{:url('course/list')}">{:lang('ADMIN_COURSE_INDEX')}</a></li>
-        <li class="active"><a href="{:url('course/add')}">{:lang('ADMIN_COURSE_ADD')}</a></li>
+        <li><a href="{:url('course/list')}">课程时间管理</a></li>
+        <li><a href="{:url('course/add')}">添加新课程</a></li>
+        <li class="active"><a>分类编辑</a></li>
     </ul>
-    <form method="post" class="form-horizontal" action="{:url('course/addPost')}">
+    <form method="post" class="form-horizontal " action="{:url('course/editPost')}">
+       
         <div class="form-group">
             <label for="input-link_name" class="col-sm-2 control-label">课程名<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_name" name="course_name" >
+                <input type="text" class="form-control" id="input-link_name" name="course_name" value="{$course.course_name}">
             </div>
         </div>
         <div class="form-group">
             <label for="input-link_name" class="col-sm-2 control-label">排序<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_name" name="list_order">
+                <input type="text" class="form-control" id="input-link_name" name="list_order" value="{$course.list_order}">
             </div>
         </div>
         <div class="form-group">
             <label for="input-link_url" class="col-sm-2 control-label">开班期数<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_url" name="course_num" >
+                <input type="text" class="form-control" id="input-link_url" name="course_num"  value="{$course.course_num}">
             </div>
         </div>
         <div class="form-group">
             <label for="input-link_url" class="col-sm-2 control-label">报名链接<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_url" name="enroll_link" >
+                <input type="text" class="form-control" id="input-link_url" name="enroll_link" value="{$course.enroll_link}" >
             </div>
         </div>
         <div class="form-group">
             <label for="input-link_url" class="col-sm-2 control-label">大纲页链接<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-link_url" name="outline_link" >
+                <input type="text" class="form-control" id="input-link_url" name="outline_link" value="{$course.outline_link}" >
             </div>
         </div>
         <div class="form-group">
             <label for="input-link_url" class="col-sm-2 control-label">授课形式<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
+                    <php>$selected_yes=$course['course_form']==1?"selected='selected'":"";</php>
+                    <php>$selected_no=$course['course_form']==0?"selected='selected'":"";</php>
+                    
                 <select class="form-control" name="course_form" id="input-target">
-                    <option value="0">线上</option>
-                    <option value="1">线下</option>
-                </select>
+                    <option value="0" {$selected_no}>线上</option>
+                    <option value="1" {$selected_yes}>线下</option>
+                 </select>
             </div>
         </div>
         <div class="form-group">
             <label for="input-target" class="col-sm-2 control-label">课程状态</label>
             <div class="col-md-6 col-sm-10">
+                    <php>$selected_yes1=$course['course_state']==1?"selected='selected'":"";</php>
+                    <php>$selected_no1=$course['course_state']==0?"selected='selected'":"";</php>
                 <select class="form-control" name="course_state" id="input-target">
-                    <option value="0">未结课</option>
-                    <option value="1">结课</option>
+                    <option value="0" {$selected_no1}>未结课</option>
+                    <option value="1" {$selected_yes1}>结课</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <label for="input-image" class="col-sm-2 control-label">课程详情介绍</label>
             <div class="col-md-6 col-sm-10">
-                <textarea class="form-control" id="input-site_analytics" name="course_details"></textarea>
+                <textarea class="form-control" id="input-site_analytics" name="course_details">{$course.course_details}</textarea>
             </div>
         </div>
+       
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
-                <a class="btn btn-default" href="javascript:history.back(-1);">{:lang('BACK')}</a>
+                <input type="hidden" name="course_id" value="{$course.course_id}">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('SAVE')}</button>
+                <a class="btn btn-default" href="{:url('CourseTime/index')}">{:lang('BACK')}</a>
             </div>
         </div>
     </form>
