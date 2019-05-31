@@ -15,6 +15,7 @@
                     data-action="{:url('course/toggle',array('hide'=>1,'type'=>'course_state'))}" data-subcheck="true">未结课
             </button>
         </div>
+        <php>$form = array("1"=>"线下","0"=>"线上");</php>
         <php>$state = array("1"=>"结课","0"=>"未结课");</php>
         <table class="table table-hover table-bordered table-list">
             <thead>
@@ -27,7 +28,6 @@
                 <th width="50">{:lang('SORT')}</th>
                 <th width="50">ID</th>
                 <th>课程名</th>
-                <th>开课时间</th>
                 <th>开班期数</th>
                 <th>报名链接</th>
                 <th>授课形式</th>
@@ -44,10 +44,19 @@
                                value='{$vo.list_order}'></td>
                     <td>{$vo.course_id}</td>
                     <td>{$vo.course_name}</td>
-                    <td>{$vo.course_time}</td>
                     <td>{$vo.course_num}</td>
-                    <td>{$vo.enroll_link}</td>
-                    <td>{$vo.course_form}</td>
+                    <td>{$vo.enroll_link}</td>{$vo.course_form}
+                    <td>
+                        <empty name="vo.course_form">
+                            <span class="label label-default">
+                                {$form[$vo['course_form']]}
+                            </span>
+                            <else/>
+                            <span class="label label-success">
+                                {$form[$vo['course_form']]}
+                            </span>
+                        </empty>
+                    </td>
                     <td>
                         <empty name="vo.course_state">
                             <span class="label label-default">
