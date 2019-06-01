@@ -39,7 +39,7 @@ class TagsController extends AdminBaseController
         $data['update_time'] = time();
         $data['is_show'] = 1;
         $TagsModel = new TagsModel();
-        $result    = $this->validate($data, 'tags');
+        $result    = $this->validate($data, 'Tags');
         if ($result !== true) {
             $this->error($result);
         }

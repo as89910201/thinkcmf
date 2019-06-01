@@ -46,10 +46,14 @@ class StudentController extends AdminBaseController
         $data      = $this->request->param();
         $data['enrol_time'] = strtotime($data['enrol_time']); 
         $data['graduate_time'] = strtotime($data['graduate_time']); 
-        if(!empty($data['img'])){
+        if(empty($data['img'])){  $this->error("请上传图片");   }
+
+        
+        if( strstr($data['img'],"http://") ||strstr($data['img'],"https://")){
+            $data['img']  = $data['img'];
+        }else{
             $data['img']  =  "https://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
         }
-        
         $StudentModel = new StudentModel();
         $result    = $this->validate($data, 'Student');
         if ($result !== true) {
