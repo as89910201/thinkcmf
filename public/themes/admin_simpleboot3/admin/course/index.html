@@ -12,7 +12,7 @@
             <button class="btn btn-sm btn-success js-ajax-submit" type="submit" data-action="{:url('course/toggle',array('display'=>1,'type'=>'course_state'))}" data-subcheck="true">结课
             </button>
             <button class="btn btn-sm btn-danger js-ajax-submit" type="submit"
-                    data-action="{:url('course/toggle',array('hide'=>1,'type'=>'course_state'))}" data-subcheck="true">未结课
+                    data-action="{:url('course/toggle',array('hide'=>0,'type'=>'course_state'))}" data-subcheck="true">未结课
             </button>
         </div>
         <php>$form = array("1"=>"线下","0"=>"线上");</php>
@@ -45,7 +45,7 @@
                     <td>{$vo.course_id}</td>
                     <td>{$vo.course_name}</td>
                     <td>{$vo.course_num}</td>
-                    <td>{$vo.enroll_link}</td>{$vo.course_form}
+                    <td>{$vo.enroll_link}</td>
                     <td>
                         <empty name="vo.course_form">
                             <span class="label label-default">
