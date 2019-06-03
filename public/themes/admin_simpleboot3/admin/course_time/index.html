@@ -1,0 +1,53 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{:url('CourseTime/index')}">所有课程时间</a></li>
+        <li><a href="{:url('CourseTime/add')}">添加新课程</a></li>
+    </ul>
+    <form method="post" class="js-ajax-form margin-top-20" action="{:url('CourseTime/listOrder')}">
+        <div class="table-actions">
+           
+ 
+        </div>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="16">
+                    <label>
+                        <input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x">
+                    </label>
+                </th>
+                <th width="50">ID</th>
+                <th>课程名称</th>
+                <th>开课时间</th>
+                <th width="120">{:lang('ACTIONS')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="CourseTime" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]"
+                               value="{$vo.id}"></td>
+            
+                    <td>{$vo.id}</td>
+                    <td>{$vo.course_name}</td>
+                    <td>{$vo.add_time|date='Y-m-d H:i:s'} </td>
+                    <td>
+                        <a class="btn btn-xs btn-primary" href="{:url('CourseTime/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+                        <a class="btn btn-xs btn-danger" href="{:url('CourseTime/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">
+                            {:lang('DELETE')}
+                        </a>
+                    </td>
+                </tr>
+            </foreach>
+             <tr>
+                 <td colspan="14"><div class="pagination">{$page}</div></td>
+             </tr>
+        </table>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
