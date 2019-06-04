@@ -6,7 +6,7 @@ use think\Model;
 use think\facade\Cache;
 use think\DB;
 
-class NavMenuModel extends Model
+class NavMenusModel extends Model
 {
     public function sel(){
         $list = DB::table('cmf_nav_menu')
@@ -14,4 +14,5 @@ class NavMenuModel extends Model
             ->select();
         return $list;
     }
+
 }

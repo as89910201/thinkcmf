@@ -38,7 +38,7 @@ class ArticleModel extends Model
     }
 
     public function handleData($data){
-        $data['img']  =  "https://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
+        $data['img']  =  "http://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
         $data['add_time'] = time();
         $data['list_order'] = (int)$data['list_order'];
         $str = '';
