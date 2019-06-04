@@ -21,7 +21,7 @@ class CategoryValidate extends Validate
     ];
 
     protected $message = [
-        'name.require' => '名称不能为空',
+        'c_name.require' => '名称不能1为空',
         'list_order.require' => '排序不能为空',
     ];
 

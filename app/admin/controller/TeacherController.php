@@ -48,6 +48,7 @@ class TeacherController extends AdminBaseController
     public function addPost()
     {
         $data = $this->request->param();
+
         $TeacherModel = new TeacherModel();
         $result    = $this->validate($data, 'Teacher');
         if ($result !== true) {
