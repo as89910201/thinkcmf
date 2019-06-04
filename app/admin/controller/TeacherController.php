@@ -92,15 +92,16 @@ class TeacherController extends AdminBaseController
     public function editPost()
     {
         $data      = $this->request->param();
-        //dump($data);die;
+        
         $TeacherModel = new TeacherModel();
         $result    = $this->validate($data, 'Teacher');
          
         if ($result !== true) {
             $this->error($result);
         }
-        $TeacherModel->allowField(true)->isUpdate(true)->save($data);
-
+        $data['teacher_tel'] = (int)$data['teacher_tel'];
+        //halt($data);
+        $TeacherModel->isUpdate(true)->save($data);
         $this->success("保存成功！", url("Teacher/index"));
     }
 
