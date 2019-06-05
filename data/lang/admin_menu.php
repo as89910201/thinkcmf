@@ -2,12 +2,11 @@
 return array (
   'ADMIN_ADVERT_INDEX' => '广告位管理',
   'ADMIN_ARTICLE_INDEX' => '文章管理',
-  'ADMIN_TITLE_INDEX' => '所有页面标题信息',
-  'ADMIN_TITLE_ADD' => '添加页面标题',
   'ADMIN_CATEGORY_INDEX' => '文章分类管理',
   'ADMIN_COURSE_INDEX' => '课程管理',
   'ADMIN_COURSE_LIST' => '课程列表',
   'ADMIN_COURSETIME_INDEX' => '课程时间管理',
+  'ADMIN_ENROLL_INDEX' => '报名学生',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',
   'ADMIN_HOOK_PLUGINS' => '钩子插件管理',
