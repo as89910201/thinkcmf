@@ -48,9 +48,15 @@ class TeacherController extends AdminBaseController
     public function addPost()
     {
         $data = $this->request->param();
-
         $TeacherModel = new TeacherModel();
+        if(empty($data['teacher_portrait_src'])){  $this->error("请上传图片");   }
+        if( strstr($data['teacher_portrait_src'],"http://") ||strstr($data['teacher_portrait_src'],"https://")){
+            $data['teacher_portrait_src']  = $data['teacher_portrait_src'];
+        }else{
+            $data['teacher_portrait_src']  =  "https://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
+        }
         $result    = $this->validate($data, 'Teacher');
+
         if ($result !== true) {
             $this->error($result);
         }

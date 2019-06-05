@@ -39,9 +39,12 @@ class AdvertController extends AdminBaseController
     public function editPost()
     {
         $data      = $this->request->param();
-        /*if(!empty($data['picture_src'])){
-            $data['picture_src']  =  "https://".$_SERVER['SERVER_NAME'].$data['picture_src'];
-        }*/
+        if(empty($data['picture_src'])){  $this->error("请上传图片");   }
+        if( strstr($data['picture_src'],"http://") ||strstr($data['picture_src'],"https://")){
+            $data['picture_src']  = $data['picture_src'];
+        }else{
+            $data['picture_src']  =  "https://".$_SERVER['SERVER_NAME']."/upload/".$data['img'];
+        }
         //dump($data);die;
         $Pictures = new PictureModel();
         $Pictures->allowField(true)->isUpdate(true)->save($data);
