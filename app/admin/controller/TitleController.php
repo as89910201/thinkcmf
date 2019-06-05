@@ -13,7 +13,7 @@ namespace app\admin\controller;
 use cmf\controller\AdminBaseController;
 use cmf\controller\BaseController;
 use app\admin\model\TitleModel;
-use app\admin\model\NavMenuModel;
+use app\admin\model\NavMenusModel;
 
 class TitleController extends AdminBaseController
 {
@@ -29,7 +29,7 @@ class TitleController extends AdminBaseController
 
     public function add()
     {
-        $NavMenuModel = new NavMenuModel();
+        $NavMenuModel = new NavMenusModel();
         $nav = $NavMenuModel->sel();
         $this->assign('nav', $nav);
         return $this->fetch();
@@ -48,7 +48,7 @@ class TitleController extends AdminBaseController
          $id = $this->request->param('id', 0, 'intval');
          $TitleModel = new TitleModel();
          $title = $TitleModel->find($id);
-         $NavMenuModel = new NavMenuModel();
+         $NavMenuModel = new NavMenusModel();
          $nav = $NavMenuModel->sel();
          $this->assign('title', $title);
          $this->assign('nav', $nav);
@@ -65,12 +65,12 @@ class TitleController extends AdminBaseController
      public function delete()
      {
          $id = $this->request->param('id', 0, 'intval');
-         TeacherModel::destroy($id);
+         TitleModel::destroy($id);
          $this->success("删除成功！", url("title/index"));
      }
      public function listOrder()
      {
-         $TeacherModel = new TeacherModel();
+         $TeacherModel = new TitleModel();
          BaseController::listOrders($TeacherModel);
          $this->success("排序更新成功！");
      }
