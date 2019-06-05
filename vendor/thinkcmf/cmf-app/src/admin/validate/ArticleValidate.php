@@ -28,7 +28,7 @@ class ArticleValidate extends Validate
         'img.require'  => '图片不能为空',
         'keywords.require' => '关键词不能为空',
         'tags_ids.require' => '签名不能为空',
-        'cid.require' => '分类不能为空|大于0',
+        'cid.require' => '分类不能为空',
         'content.require' => '内容不能为空',
     ];
 

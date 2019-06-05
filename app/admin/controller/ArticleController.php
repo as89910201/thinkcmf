@@ -42,14 +42,17 @@ class ArticleController extends AdminBaseController
     public function addPost()
     {
         $data      = $this->request->param();
+        if(empty($data['img'])){  $this->error("请上传图片");   }
         $ArticleModel = new ArticleModel();
         $result    = $this->validate($data, 'article');
         if ($result !== true) {
             $this->error($result);
         }
         $data = $ArticleModel->handleData($data);
-        $ArticleModel->allowField(true)->save($data);
-        $this->success("添加成功！", url("article/index"));
+        if(!$ArticleModel->allowField(true)->save($data)){
+            return array('url'=>'/admin/article/index','code'=>500,'msg'=>'添加失败');
+        }
+        return array('url'=>'/admin/article/index','code'=>200,'msg'=>'添加成功');
     }
 
    
@@ -73,15 +76,18 @@ class ArticleController extends AdminBaseController
     public function editPost()
     {
         $data      = $this->request->param();
+        if(empty($data['img'])){  $this->error("请上传图片");   }
         $ArticleModel = new ArticleModel();
         $result    = $this->validate($data, 'article');
         if ($result !== true) {
             $this->error($result);
         }
-        $data = $ArticleModel->handleData($data);
-        $ArticleModel->allowField(true)->isUpdate(true)->save($data);
 
-        $this->success("保存成功！", url("article/index"));
+        $data = $ArticleModel->handleData($data);
+        if(!$ArticleModel->allowField(true)->isUpdate(true)->save($data)){
+            return array('url'=>'/admin/article/index','code'=>500,'msg'=>'保存失败');
+        }
+        return array('url'=>'/admin/article/index','code'=>200,'msg'=>'保存成功');
     }
 
   

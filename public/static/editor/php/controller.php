@@ -44,7 +44,9 @@ switch ($action) {
         ));
         break;
 }
-
+$result = json_decode($result);
+$result->url = "http://".$_SERVER['SERVER_NAME'].$result->url;
+$result = json_encode($result);
 /* 输出结果 */
 if (isset($_GET["callback"])) {
     if (preg_match("/^[\w_]+$/", $_GET["callback"])) {

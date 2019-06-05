@@ -2,8 +2,6 @@
 return array (
   'ADMIN_ADVERT_INDEX' => '广告位管理',
   'ADMIN_ARTICLE_INDEX' => '文章管理',
-  'ADMIN_TITLE_INDEX' => '所有页面标题信息',
-  'ADMIN_TITLE_ADD' => '添加页面标题',
   'ADMIN_CATEGORY_INDEX' => '文章分类管理',
   'ADMIN_COURSE_INDEX' => '课程管理',
   'ADMIN_COURSE_LIST' => '课程列表',

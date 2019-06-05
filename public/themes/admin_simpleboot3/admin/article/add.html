@@ -6,7 +6,7 @@
         <li><a href="{:url('article/index')}">{:lang('ADMIN_ARTICLE_ADD')}</a></li>
         <li class="active"><a href="{:url('article/add')}">{:lang('ADMIN_ARTICLE_ADD')}</a></li>
     </ul>
-    <form method="post" class="form-horizontal" action="{:url('article/addPost')}">
+    <form method="post" id="form" class="form-horizontal" action="{:url('article/addPost')}">
         <div class="form-group">
             <label for="input-link_name" class="col-sm-2 control-label">标题<span class="form-required">*</span></label>
             <div class="col-md-6 col-sm-10">
@@ -82,8 +82,27 @@
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     $(function(){
-        ue = UE.getEditor('content',{initialFrameHeight:300,initialFrameWidth:700 });
+        ue = UE.getEditor('content',{
+            initialFrameHeight:300,initialFrameWidth:700,
+        });
     });
+
+    $('#form').on("submit",function (e) {
+        e.preventDefault();
+        var content =  ue.getContent();
+        $.ajax({
+            type: "POST",
+            url: $(this).attr('action'),
+            data: $(this).serialize()+"&content="+content,
+            success: function(msg){
+                if(msg.code == 200){
+                    window.location=msg.url;
+                }else{
+                    alert(msg.msg)
+                }
+            }
+        });
+    })
 
     /*
 
