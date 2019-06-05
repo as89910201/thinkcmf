@@ -65,12 +65,12 @@ class TitleController extends AdminBaseController
      public function delete()
      {
          $id = $this->request->param('id', 0, 'intval');
-         TeacherModel::destroy($id);
+         TitleModel::destroy($id);
          $this->success("删除成功！", url("title/index"));
      }
      public function listOrder()
      {
-         $TeacherModel = new TeacherModel();
+         $TeacherModel = new TitleModel();
          BaseController::listOrders($TeacherModel);
          $this->success("排序更新成功！");
      }
