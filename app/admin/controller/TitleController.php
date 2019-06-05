@@ -48,7 +48,7 @@ class TitleController extends AdminBaseController
          $id = $this->request->param('id', 0, 'intval');
          $TitleModel = new TitleModel();
          $title = $TitleModel->find($id);
-         $NavMenuModel = new NavMenuModel();
+         $NavMenuModel = new NavMenusModel();
          $nav = $NavMenuModel->sel();
          $this->assign('title', $title);
          $this->assign('nav', $nav);
