@@ -11,6 +11,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\NavMenuModel;
+
 use cmf\controller\AdminBaseController;
 use tree\Tree;
 
@@ -20,6 +21,7 @@ use tree\Tree;
  */
 class NavMenuController extends AdminBaseController
 {
+    public $navUrl = 'http://www.hongboit.net/upload/';
     /**
      * 导航菜单
      * @adminMenu(
@@ -146,7 +148,7 @@ class NavMenuController extends AdminBaseController
             $arrData['href'] = htmlspecialchars_decode($arrData['href']);
             $arrData['href'] = base64_decode($arrData['href']);
         }
-
+        $arrData['img'] = "http://".$_SERVER['SERVER_NAME']."/upload/".$arrData['img'];
         $navMenuModel->allowField(true)->isUpdate(false)->save($arrData);
 
         $this->success(lang("EDIT_SUCCESS"), url("NavMenu/index", ['nav_id' => $arrData['nav_id']]));
@@ -242,7 +244,7 @@ class NavMenuController extends AdminBaseController
             $arrData['href'] = htmlspecialchars_decode($arrData['href']);
             $arrData['href'] = base64_decode($arrData['href']);
         }
-
+        $arrData['img'] = "http://".$_SERVER['SERVER_NAME']."/upload/".$arrData['img'];
         $navMenuModel->update($arrData, ["id" => $intId], true);
 
         $this->success(lang("EDIT_SUCCESS"), url("NavMenu/index", ['nav_id' => $arrData['nav_id']]));

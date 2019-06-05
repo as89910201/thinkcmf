@@ -9,10 +9,7 @@ use think\DB;
 class TeacherModel extends Model
 {
     protected $pk = 'teacher_id';
-    /*public function select(){
-        $list = parent::select();
-        return $list;
-    }*/
+       
     public function get($id){
         $teacher = parent::get($id);
         return $teacher;
@@ -25,4 +22,5 @@ class TeacherModel extends Model
             ->paginate(2);
         return $list;
     }
+
 }
