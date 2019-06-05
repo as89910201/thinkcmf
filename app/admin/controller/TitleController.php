@@ -13,7 +13,7 @@ namespace app\admin\controller;
 use cmf\controller\AdminBaseController;
 use cmf\controller\BaseController;
 use app\admin\model\TitleModel;
-use app\admin\model\NavMenuModel;
+use app\admin\model\NavMenusModel;
 
 class TitleController extends AdminBaseController
 {
@@ -29,7 +29,7 @@ class TitleController extends AdminBaseController
 
     public function add()
     {
-        $NavMenuModel = new NavMenuModel();
+        $NavMenuModel = new NavMenusModel();
         $nav = $NavMenuModel->sel();
         $this->assign('nav', $nav);
         return $this->fetch();
