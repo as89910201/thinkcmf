@@ -66,6 +66,7 @@ return array (
   'ADMIN_RECYCLEBIN_DELETE' => '回收站彻底删除',
   'ADMIN_RECYCLEBIN_INDEX' => '回收站',
   'ADMIN_RECYCLEBIN_RESTORE' => '回收站还原',
+  'ADMIN_REFERRER_INDEX' => '推荐人管理',
   'ADMIN_ROUTE_ADD' => '添加路由规则',
   'ADMIN_ROUTE_ADDPOST' => '添加路由规则提交',
   'ADMIN_ROUTE_BAN' => '路由规则禁用',
